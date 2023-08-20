@@ -1,0 +1,109 @@
+baseURL: "https://pranaychakilam.github.io/portfolio/"
+languageCode: en-us
+title: Pranay Chakilam
+theme: PaperMod
+
+canonifyURLs = true
+
+menu:
+  main:
+    - identifier: home
+      name: Home
+      url: /
+      weight: 10
+    - identifier: certifications
+      name: Certifications
+      url: /certifications
+      weight: 50
+    - identifier: projects
+      name: Projects
+      url: /projects
+      weight: 40
+    - identifier: experience
+      name: Experience
+      url: /experience
+      weight: 20
+    - identifier: search
+      name: Search
+      url: /search
+      weight: 60
+    - identifier: recommendations
+      name: Recommendations
+      url: /recommendations
+      weight: 60
+    # - identifier: tags
+    #   name: Tags
+    #   url: /tags
+    #   weight: 60
+    # - identifier: notes
+    #   name: Notes
+    #   url: https://notes.arkalim.org
+    #   weight: 70
+
+params:
+  # theme
+  showToc: true
+  TocOpen: false
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: true
+  hideMeta: false
+
+  # for enchanced SEO
+  env: production
+
+  # Home Page
+  profileMode:
+    enabled: true
+    title: "Pranay Chakilam"
+    subtitle: Hi 👋! I'm Pranay, a highly motivated and experienced problem solver with a passion for data science and have 2+ years of experience leveraging data to provide actionable insights and business solutions to clients and organizations. I have an excellent command of business operations and analytics tools with the ability to visualize the Big Picture from a 360-degree view yielding highly effective analysis and communication. I am logical, able to grasp new concepts, incorporate innovations, and stay up to date with industry and business standards.
+    # an ambitious DevOps Intern at [**16Bit.ai**](https://www.16bit.ai), an innovative healthcare startup in Toronto. Currently pursuing my [**MSc in Applied Computing**](https://mscac.utoronto.ca/) at the esteemed University of Toronto, I bring a solid foundation in Software Engineering with professional experience. I am captivated by the realm of Cloud Computing and DevOps practices, seeking to revolutionize how we deploy applications in the modern era. To enhance my expertise, I have also obtained AWS associate-level certifications as a Solutions Architect and Developer, further bolstering my skills in the cloud computing domain. My unwavering curiosity and drive push me to explore fresh avenues to redefine technological frontiers. During my leisure hours, I channel my creativity into crafting engaging YouTube 🎬 videos, where I share my journey as an international student in Canada 🇨🇦.
+    # imageUrl: "home/pic.jpg"
+    imageUrl: "home/formal-pic-small.png"
+    imageWidth: 220
+    imageHeight: 220
+    buttons:
+      - name: Resume
+        url: "https://drive.google.com/file/d/1Vrf34hDqpf11yTAyhTV_tYR0w7GGTcLP/view?usp=drive_link"
+
+  # List View
+  hideDescriptionInList: false
+
+  # cover image for posts
+  cover:
+    hiddenInList: false # hide on list pages and home
+    hiddenInSingle: false # hide on single page
+
+  socialIcons:
+    - name: "email"
+      url: "mailto:pranaychakilam999@gmail.com"
+    - name: "linkedin"
+      url: "https://www.linkedin.com/in/pranay-chakilam"
+    - name: "github"
+      url: "https://github.com/pranaychakilam"
+    # - name: "youtube"
+    #   url: "https://www.youtube.com/c/AbdurRahmanKalim"
+    # - name: "cv"
+    #   url: "https://drive.google.com/file/d/1U6Gg2RnHSCthtWLbZJBlAEI3V1WGjZty/view"
+
+  # text search
+  fuseOpts:
+    isCaseSensitive: false
+    shouldSort: true
+    location: 0
+    distance: 1000
+    threshold: 0.4
+    minMatchCharLength: 0
+    keys: ["title", "permalink", "summary", "content"]
+
+# for search using Fuse.js
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
+
+# allow HTML in MD
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
