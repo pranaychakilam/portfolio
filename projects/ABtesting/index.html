@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>A/B Testing | Pranay Chakilam</title>
+<meta name="keywords" content="Python, AB testing, Boot Strapping">
+<meta name="description" content="Introduction Tactile Entertainment created the wildly famous smartphone puzzle game Cookie Cats. To clear the board and complete the level, the player must link tiles of the same hue in this traditional &ldquo;connect three&rdquo; puzzle game.
+Players will occasionally come across gates as they advance through the game&rsquo;s stages that require them to wait a significant length of time or spend an in-app purchase in order to pass. These gates serve the crucial function of forcing players to take breaks from playing the game, which should boost and prolong the player&rsquo;s pleasure of the game in addition to encouraging in-app purchases.">
+<meta name="author" content="">
+<link rel="canonical" href="https://pranaychakilam.github.io/portfolio/projects/abtesting/">
+<link crossorigin="anonymous" href="https://pranaychakilam.github.io/portfolio/assets/css/stylesheet.min.a72801f0f40a8d7f71aa1cafd1c2f2a993a1f26ca1cfd38fdba65d5b9b0f08a0.css" integrity="sha256-pygB8PQKjX9xqhyv0cLyqZOh8myhz9OP26ZdW5sPCKA=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="https://pranaychakilam.github.io/portfolio/assets/js/highlight.min.b95bacdc39e37a332a9f883b1e78be4abc1fdca2bc1f2641f55e3cd3dabd4d61.js" integrity="sha256-uVus3DnjejMqn4g7Hni&#43;Srwf3KK8HyZB9V4809q9TWE="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://pranaychakilam.github.io/portfolio/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://pranaychakilam.github.io/portfolio/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://pranaychakilam.github.io/portfolio/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://pranaychakilam.github.io/portfolio/apple-touch-icon.png">
+<link rel="mask-icon" href="https://pranaychakilam.github.io/portfolio/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="A/B Testing" />
+<meta property="og:description" content="Introduction Tactile Entertainment created the wildly famous smartphone puzzle game Cookie Cats. To clear the board and complete the level, the player must link tiles of the same hue in this traditional &ldquo;connect three&rdquo; puzzle game.
+Players will occasionally come across gates as they advance through the game&rsquo;s stages that require them to wait a significant length of time or spend an in-app purchase in order to pass. These gates serve the crucial function of forcing players to take breaks from playing the game, which should boost and prolong the player&rsquo;s pleasure of the game in addition to encouraging in-app purchases." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://pranaychakilam.github.io/portfolio/projects/abtesting/" />
+<meta property="og:image" content="https://pranaychakilam.github.io/portfolio/projects/ABtesting/cookiecats.jpg" /><meta property="article:section" content="projects" />
+
+
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://pranaychakilam.github.io/portfolio/projects/ABtesting/cookiecats.jpg" />
+<meta name="twitter:title" content="A/B Testing"/>
+<meta name="twitter:description" content="Introduction Tactile Entertainment created the wildly famous smartphone puzzle game Cookie Cats. To clear the board and complete the level, the player must link tiles of the same hue in this traditional &ldquo;connect three&rdquo; puzzle game.
+Players will occasionally come across gates as they advance through the game&rsquo;s stages that require them to wait a significant length of time or spend an in-app purchase in order to pass. These gates serve the crucial function of forcing players to take breaks from playing the game, which should boost and prolong the player&rsquo;s pleasure of the game in addition to encouraging in-app purchases."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Projects",
+      "item": "https://pranaychakilam.github.io/portfolio/projects/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "A/B Testing",
+      "item": "https://pranaychakilam.github.io/portfolio/projects/abtesting/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "A/B Testing",
+  "name": "A\/B Testing",
+  "description": "Introduction Tactile Entertainment created the wildly famous smartphone puzzle game Cookie Cats. To clear the board and complete the level, the player must link tiles of the same hue in this traditional \u0026ldquo;connect three\u0026rdquo; puzzle game.\nPlayers will occasionally come across gates as they advance through the game\u0026rsquo;s stages that require them to wait a significant length of time or spend an in-app purchase in order to pass. These gates serve the crucial function of forcing players to take breaks from playing the game, which should boost and prolong the player\u0026rsquo;s pleasure of the game in addition to encouraging in-app purchases.",
+  "keywords": [
+    "Python", "AB testing", "Boot Strapping"
+  ],
+  "articleBody": "Introduction Tactile Entertainment created the wildly famous smartphone puzzle game Cookie Cats. To clear the board and complete the level, the player must link tiles of the same hue in this traditional “connect three” puzzle game.\nPlayers will occasionally come across gates as they advance through the game’s stages that require them to wait a significant length of time or spend an in-app purchase in order to pass. These gates serve the crucial function of forcing players to take breaks from playing the game, which should boost and prolong the player’s pleasure of the game in addition to encouraging in-app purchases.\nWhere should the gates be situated? In Cookie Cats, the first gate was initially situated at level 30, but in this notebook, we’ll investigate an AB-test in which we moved it to level 40. We’ll focus on the effect on player retention in particular.\nDataset The data we have is from 90,189 players that installed the game while the AB-test was running. The variables are:\nuserid - a unique number that identifies each player.\nversion - whether the player was put in the control group (gate_30 - a gate at level 30) or the group with the moved gate (gate_40 - a gate at level 40).\nsum_gamerounds - the number of game rounds played by the player during the first 14 days after install.\nretention_1 - did the player come back and play 1 day after installing?\nretention_7 - did the player come back and play 7 days after installing?\ndf=pd.read_csv('/content/cookie_cats.csv') df.head() When a player installed the game, he or she was randomly assigned to either gate_30 or gate_40. As a sanity check, let’s see if there are roughly the same number of players in each AB group.\ndf.groupby('version')['userid'].count() The distribution of game rounds The focus of this analysis will be on how the gate placement affects player retention, but just for fun: Let’s plot the distribution of the number of game rounds players played during their first week playing the game.\n# Counting the number of players for each number of gamerounds plot_df=df.groupby('sum_gamerounds')['userid'].count() # Plotting the distribution of players that played 0 to 100 game rounds ax=plot_df.head(100).plot(x='sum_gamerounds',y='userid') ax.set_xlabel('Game Rounds') ax.set_ylabel('Number of Users') Overall 1-day retention We can see from the plot above that some people download the game but never play it (0 game rounds), some players only play a few game rounds in their first week, and some players get completely enamored with the game!\nThe goal is for players to enjoy the experience and become addicted. The percentage of players that return to play a game one day after installing it is a widely used indicator in the video game industry of how entertaining and captivating a game is. The easier it is to keep players and develop a sizable player base, the greater 1-day retention is.\nLet’s start by taking a general look of 1-day retention.\n# The % of users that came back the day after they installed df['retention_1'].mean() So, one day after installing the game, a little under half of the gamers return. We may compare the two AB-groups’ 1-day retention levels now that we have a benchmark.\n# Calculating 1-day retention for each AB-group df.groupby('version')['retention_1'].mean() Should we be confident in the difference? In comparison to the control when the gate was at level 30(44.8%), it appears that there was a minor drop in 1-day retention (44.2 %). It’s a minor adjustment, but retention can be significantly impacted by even minor adjustments. How confident should we be that a gate at level 40 will be worse in the future, even though we are convinced of the difference in the data?\nWe can determine the degree of certainty in these retention rates in a few different methods. We’ll use bootstrapping in this case: Our dataset will be repeatedly re-sampled (with replacement), and for those samples, 1-day retention will be determined. We can tell how dubious the retention data are by looking at the variation in 1-day retention.\n# Creating an list with bootstrapped means for each AB-group boot_1d=[] for i in range(500): boot_mean=df.sample(frac=1, replace=True).groupby('version')['retention_1'].mean() boot_1d.append(boot_mean) # Transforming the list to a DataFrame boot_1d=pd.DataFrame(boot_1d) # A Kernel Density Estimate plot of the bootstrap distributions boot_1d.plot() Zooming in on the difference For the two AB-groups, these two distributions above show the bootstrap uncertainty of the underlying 1-day retention. Simply by skimming this figure, we can tell that they appears to be some, albeit minor, evidence of a difference. Focusing on the variation in 1-day retention.\n(Take notice that to keep the calculations moving quickly, we’ve capped the number of bootstrap replications in this notebook at 500.) This would most certainly be increased to a much higher amount in “production,” like 10,000.\n# Adding a column with the % difference between the two AB-groups boot_1d['diff']=((boot_1d['gate_30']-boot_1d['gate_40'])*100/boot_1d['gate_40']) # Ploting the bootstrap % difference ax=boot_1d['diff'].plot() ax.set_xlabel('Difference for AB-groups') According to this graph, the most likely percent difference is between 1 and 2 percent, and the majority of the distribution is above 0%, favoring a gate at level 30.\n7-day retention by AB-group According to the bootstrap study, there is a good chance that a level 30, gate will result in greater 1-day retention. The majority of players probably haven’t attained level 30 yet, given that players have only been playing the game for one day. That is, even if the gate appears at level 30, many players won’t have been impacted by it.\nHowever, more players ought to have attained level 40 after a week of play, therefore it makes reasonable to also consider 7-day retention. That is, what proportion of those who downloaded the game returned a week later to play it again.\nFirst, let’s determine the 7-day retention for the two AB-groups.\ndf['retention_7'].mean() So, seven days after installing the game, only few of the gamers return. We may compare the two AB-groups’ 7-day retention levels now that we have a benchmark.\n# Calculating 7-day retention for both AB-groups df.groupby('version')['retention_7'].mean() prob Bootstrapping the difference again Similar to 1-day retention, we observe that when the gate is at level 40 compared to level 30(19.02%), 7-day retention is marginally lower (18.2%). Additionally, this disparity is greater than for 1-day retention, most likely as a result of more players having had a chance to enter the first gate. More people don’t play a game a day after installing it than a week later, as shown by the fact that the overall 7-day retention is lower than the overall 1-day retention.\nTo determine how certain we should be about the difference between the AB-groups, let’s apply bootstrap analysis as before\n# Creating a list with bootstrapped means for each AB-group boot_7d=[] for i in range(500): boot_mean=df.sample(frac=1,replace=True).groupby('version')['retention_7'].mean() boot_7d.append(boot_mean) # Transforming the list to a DataFrame boot_7d=pd.DataFrame(boot_7d) boot_7d.plot() For the two AB-groups, these two distributions above show the bootstrap uncertainty of the underlying 7-day retention. Simply by skimming this figure, we can tell that they appears to be some, albeit minor, evidence of a difference. Focusing on the variation in 7-day retention.\n(Take notice that to keep the calculations moving quickly, we’ve capped the number of bootstrap replications in this notebook at 500.) This would most certainly be increased to a much higher amount in “production,” like 10,000.\n# Adding a column with the % difference between the two AB-groups boot_7d['diff']=((boot_7d['gate_30']-boot_7d['gate_40'])*100/boot_7d['gate_40']) # Ploting the bootstrap % difference ax=boot_7d['diff'].plot() ax.set_xlabel('% difference in means') The conclusion According to the bootstrap finding, there is convincing evidence that when the gate is at level 30 as opposed to level 40, 7-day retention is higher. The conclusion is that we shouldn’t move the gate from level 30 to level 40 if we want to maintain good retention—both 1-day and 7-day retention. Of course, there are further metrics we might examine, such as the quantity of game rounds played or the amount of in-game purchases made by the two AB-groups. However, one of the most crucial measures is retention. It doesn’t matter how much money players spend in-game if we can’t keep them as customers.\nWhy does retention increase when the gate is placed earlier? The reverse might be anticipated: The longer people play the game, the later the hurdle will be. But the evidence do not support this. One explanation for this is the hedonic adaptation idea.Hedonic adaptation, to put it briefly, is the propensity for humans to derive less and less pleasure over time from an enjoyable activity if that action is continued. Players’ enjoyment of the game is increased by making them stop when they get to a gate. However, fewer players reach level 40 when the gate is moved there, and those who do are more likely to abandon the game out of boredom.\n# So, given the data and the bootstrap analysis # Should we move the gate from level 30 to level 40 ? move_to_level_40 = False Code Complete code can also be found in my GitHub.\n",
+  "wordCount" : "1482",
+  "inLanguage": "en",
+  "image":"https://pranaychakilam.github.io/portfolio/projects/ABtesting/cookiecats.jpg","datePublished": "0001-01-01T00:00:00Z",
+  "dateModified": "0001-01-01T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://pranaychakilam.github.io/portfolio/projects/abtesting/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Pranay Chakilam",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://pranaychakilam.github.io/portfolio/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header sticky-header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://pranaychakilam.github.io/portfolio/" accesskey="h" title="Pranay Chakilam (Alt + H)">Pranay Chakilam</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://pranaychakilam.github.io/" title="Home">
+                    <span>Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://pranaychakilam.github.io/experience" title="Experience">
+                    <span>Experience</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://pranaychakilam.github.io/projects" title="Projects">
+                    <span>Projects</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://pranaychakilam.github.io/certifications" title="Certifications">
+                    <span>Certifications</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://pranaychakilam.github.io/recommendations" title="Recommendations">
+                    <span>Recommendations</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://pranaychakilam.github.io/search" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://pranaychakilam.github.io/portfolio/">Home</a>&nbsp;»&nbsp;<a href="https://pranaychakilam.github.io/portfolio/projects/">Projects</a></div>
+    <h1 class="post-title">
+      A/B Testing
+    </h1>
+    <div class="post-meta">
+
+
+Jan 2021 - May 2021
+
+</div>
+  </header> 
+<figure class="entry-cover"><img loading="lazy" src="https://pranaychakilam.github.io/portfolio/projects/ABtesting/cookiecats.jpg" alt="">
+        
+</figure>
+  <div class="post-content"><h1 id="introduction">Introduction<a hidden class="anchor" aria-hidden="true" href="#introduction">#</a></h1>
+<p>Tactile Entertainment created the wildly famous smartphone puzzle game Cookie Cats. To clear the board and complete the level, the player must link tiles of the same hue in this traditional &ldquo;connect three&rdquo; puzzle game.</p>
+<p>Players will occasionally come across gates as they advance through the game&rsquo;s stages that require them to wait a significant length of time or spend an in-app purchase in order to pass. These gates serve the crucial function of forcing players to take breaks from playing the game, which should boost and prolong the player&rsquo;s pleasure of the game in addition to encouraging in-app purchases.</p>
+<p>Where should the gates be situated? In Cookie Cats, the first gate was initially situated at level 30, but in this notebook, we&rsquo;ll investigate an AB-test in which we moved it to level 40. We&rsquo;ll focus on the effect on player retention in particular.</p>
+<h1 id="dataset">Dataset<a hidden class="anchor" aria-hidden="true" href="#dataset">#</a></h1>
+<p>The data we have is from 90,189 players that installed the game while the AB-test was running. The variables are:</p>
+<p>userid - a unique number that identifies each player.</p>
+<p>version - whether the player was put in the control group (gate_30 - a gate at level 30) or the group with the moved gate (gate_40 - a gate at level 40).</p>
+<p>sum_gamerounds - the number of game rounds played by the player during the first 14 days after install.</p>
+<p>retention_1 - did the player come back and play 1 day after installing?</p>
+<p>retention_7 - did the player come back and play 7 days after installing?</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>df<span style="color:#f92672">=</span>pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#39;/content/cookie_cats.csv&#39;</span>)
+</span></span><span style="display:flex;"><span>df<span style="color:#f92672">.</span>head()
+</span></span></code></pre></div><p><img loading="lazy" src="https://pranaychakilam.github.io/portfolio/projects/ABtesting/inputdata.jpg#center" alt="Data Sample"  />
+</p>
+<p>When a player installed the game, he or she was randomly assigned to either gate_30 or gate_40. As a sanity check, let&rsquo;s see if there are roughly the same number of players in each AB group.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>df<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#39;version&#39;</span>)[<span style="color:#e6db74">&#39;userid&#39;</span>]<span style="color:#f92672">.</span>count()
+</span></span></code></pre></div><p><img loading="lazy" src="https://pranaychakilam.github.io/portfolio/projects/ABtesting/bias.jpg#center" alt=""  />
+</p>
+<h1 id="the-distribution-of-game-rounds">The distribution of game rounds<a hidden class="anchor" aria-hidden="true" href="#the-distribution-of-game-rounds">#</a></h1>
+<p>The focus of this analysis will be on how the gate placement affects player retention, but just for fun: Let&rsquo;s plot the distribution of the number of game rounds players played during their first week playing the game.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Counting the number of players for each number of gamerounds</span>
+</span></span><span style="display:flex;"><span>plot_df<span style="color:#f92672">=</span>df<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#39;sum_gamerounds&#39;</span>)[<span style="color:#e6db74">&#39;userid&#39;</span>]<span style="color:#f92672">.</span>count()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Plotting the distribution of players that played 0 to 100 game rounds</span>
+</span></span><span style="display:flex;"><span>ax<span style="color:#f92672">=</span>plot_df<span style="color:#f92672">.</span>head(<span style="color:#ae81ff">100</span>)<span style="color:#f92672">.</span>plot(x<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;sum_gamerounds&#39;</span>,y<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;userid&#39;</span>)
+</span></span><span style="display:flex;"><span>ax<span style="color:#f92672">.</span>set_xlabel(<span style="color:#e6db74">&#39;Game Rounds&#39;</span>)
+</span></span><span style="display:flex;"><span>ax<span style="color:#f92672">.</span>set_ylabel(<span style="color:#e6db74">&#39;Number of Users&#39;</span>)
+</span></span></code></pre></div><p><img loading="lazy" src="https://pranaychakilam.github.io/portfolio/projects/ABtesting/distribution.jpg#center" alt=""  />
+</p>
+<h1 id="overall-1-day-retention">Overall 1-day retention<a hidden class="anchor" aria-hidden="true" href="#overall-1-day-retention">#</a></h1>
+<p>We can see from the plot above that some people download the game but never play it (0 game rounds), some players only play a few game rounds in their first week, and some players get completely enamored with the game!</p>
+<p>The goal is for players to enjoy the experience and become addicted. The percentage of players that return to play a game one day after installing it is a widely used indicator in the video game industry of how entertaining and captivating a game is. The easier it is to keep players and develop a sizable player base, the greater 1-day retention is.</p>
+<p>Let&rsquo;s start by taking a general look of 1-day retention.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># The % of users that came back the day after they installed</span>
+</span></span><span style="display:flex;"><span>df[<span style="color:#e6db74">&#39;retention_1&#39;</span>]<span style="color:#f92672">.</span>mean()
+</span></span></code></pre></div><p><img loading="lazy" src="https://pranaychakilam.github.io/portfolio/projects/ABtesting/1-day-reten.jpg" alt=""  />
+</p>
+<p>So, one day after installing the game, a little under half of the gamers return. We may compare the two AB-groups&rsquo; 1-day retention levels now that we have a benchmark.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Calculating 1-day retention for each AB-group</span>
+</span></span><span style="display:flex;"><span>df<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#39;version&#39;</span>)[<span style="color:#e6db74">&#39;retention_1&#39;</span>]<span style="color:#f92672">.</span>mean()
+</span></span></code></pre></div><p><img loading="lazy" src="https://pranaychakilam.github.io/portfolio/projects/ABtesting/1-day-reten-grp.jpg" alt=""  />
+</p>
+<h1 id="should-we-be-confident-in-the-difference">Should we be confident in the difference?<a hidden class="anchor" aria-hidden="true" href="#should-we-be-confident-in-the-difference">#</a></h1>
+<p>In comparison to the control when the gate was at level 30(44.8%), it appears that there was a minor drop in 1-day retention (44.2 %). It&rsquo;s a minor adjustment, but retention can be significantly impacted by even minor adjustments. How confident should we be that a gate at level 40 will be worse in the future, even though we are convinced of the difference in the data?</p>
+<p>We can determine the degree of certainty in these retention rates in a few different methods. We&rsquo;ll use bootstrapping in this case: Our dataset will be repeatedly re-sampled (with replacement), and for those samples, 1-day retention will be determined. We can tell how dubious the retention data are by looking at the variation in 1-day retention.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Creating an list with bootstrapped means for each AB-group</span>
+</span></span><span style="display:flex;"><span>boot_1d<span style="color:#f92672">=</span>[]
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">500</span>):
+</span></span><span style="display:flex;"><span>  boot_mean<span style="color:#f92672">=</span>df<span style="color:#f92672">.</span>sample(frac<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, replace<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#39;version&#39;</span>)[<span style="color:#e6db74">&#39;retention_1&#39;</span>]<span style="color:#f92672">.</span>mean()
+</span></span><span style="display:flex;"><span>  boot_1d<span style="color:#f92672">.</span>append(boot_mean)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Transforming the list to a DataFrame</span>
+</span></span><span style="display:flex;"><span>boot_1d<span style="color:#f92672">=</span>pd<span style="color:#f92672">.</span>DataFrame(boot_1d)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># A Kernel Density Estimate plot of the bootstrap distributions</span>
+</span></span><span style="display:flex;"><span>boot_1d<span style="color:#f92672">.</span>plot()
+</span></span></code></pre></div><p><img loading="lazy" src="https://pranaychakilam.github.io/portfolio/projects/ABtesting/bootstrap.jpg#center" alt=""  />
+</p>
+<h1 id="zooming-in-on-the-difference">Zooming in on the difference<a hidden class="anchor" aria-hidden="true" href="#zooming-in-on-the-difference">#</a></h1>
+<p>For the two AB-groups, these two distributions above show the bootstrap uncertainty of the underlying 1-day retention. Simply by skimming this figure, we can tell that they appears to be some, albeit minor, evidence of a difference. Focusing on the variation in 1-day retention.</p>
+<p>(Take notice that to keep the calculations moving quickly, we&rsquo;ve capped the number of bootstrap replications in this notebook at 500.) This would most certainly be increased to a much higher amount in &ldquo;production,&rdquo; like 10,000.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Adding a column with the % difference between the two AB-groups</span>
+</span></span><span style="display:flex;"><span>boot_1d[<span style="color:#e6db74">&#39;diff&#39;</span>]<span style="color:#f92672">=</span>((boot_1d[<span style="color:#e6db74">&#39;gate_30&#39;</span>]<span style="color:#f92672">-</span>boot_1d[<span style="color:#e6db74">&#39;gate_40&#39;</span>])<span style="color:#f92672">*</span><span style="color:#ae81ff">100</span><span style="color:#f92672">/</span>boot_1d[<span style="color:#e6db74">&#39;gate_40&#39;</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Ploting the bootstrap % difference</span>
+</span></span><span style="display:flex;"><span>ax<span style="color:#f92672">=</span>boot_1d[<span style="color:#e6db74">&#39;diff&#39;</span>]<span style="color:#f92672">.</span>plot()
+</span></span><span style="display:flex;"><span>ax<span style="color:#f92672">.</span>set_xlabel(<span style="color:#e6db74">&#39;Difference for AB-groups&#39;</span>)
+</span></span></code></pre></div><p><img loading="lazy" src="https://pranaychakilam.github.io/portfolio/projects/ABtesting/difference.jpg#center" alt=""  />
+</p>
+<p>According to this graph, the most likely percent difference is between 1 and 2 percent, and the majority of the distribution is above 0%, favoring a gate at level 30.</p>
+<h1 id="7-day-retention-by-ab-group">7-day retention by AB-group<a hidden class="anchor" aria-hidden="true" href="#7-day-retention-by-ab-group">#</a></h1>
+<p>According to the bootstrap study, there is a good chance that a level 30, gate will result in greater 1-day retention. The majority of players probably haven&rsquo;t attained level 30 yet, given that players have only been playing the game for one day. That is, even if the gate appears at level 30, many players won&rsquo;t have been impacted by it.</p>
+<p>However, more players ought to have attained level 40 after a week of play, therefore it makes reasonable to also consider 7-day retention. That is, what proportion of those who downloaded the game returned a week later to play it again.</p>
+<p>First, let&rsquo;s determine the 7-day retention for the two AB-groups.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>df[<span style="color:#e6db74">&#39;retention_7&#39;</span>]<span style="color:#f92672">.</span>mean()
+</span></span></code></pre></div><p><img loading="lazy" src="https://pranaychakilam.github.io/portfolio/projects/ABtesting/7-day-reten.jpg" alt=""  />
+</p>
+<p>So, seven days after installing the game, only few of the gamers return. We may compare the two AB-groups&rsquo; 7-day retention levels now that we have a benchmark.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Calculating 7-day retention for both AB-groups</span>
+</span></span><span style="display:flex;"><span>df<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#39;version&#39;</span>)[<span style="color:#e6db74">&#39;retention_7&#39;</span>]<span style="color:#f92672">.</span>mean()
+</span></span><span style="display:flex;"><span>prob
+</span></span></code></pre></div><p><img loading="lazy" src="https://pranaychakilam.github.io/portfolio/projects/ABtesting/7-day-reten-grp.jpg" alt=""  />
+</p>
+<h1 id="bootstrapping-the-difference-again">Bootstrapping the difference again<a hidden class="anchor" aria-hidden="true" href="#bootstrapping-the-difference-again">#</a></h1>
+<p>Similar to 1-day retention, we observe that when the gate is at level 40 compared to level 30(19.02%), 7-day retention is marginally lower (18.2%). Additionally, this disparity is greater than for 1-day retention, most likely as a result of more players having had a chance to enter the first gate. More people don&rsquo;t play a game a day after installing it than a week later, as shown by the fact that the overall 7-day retention is lower than the overall 1-day retention.</p>
+<p>To determine how certain we should be about the difference between the AB-groups, let&rsquo;s apply bootstrap analysis as before</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Creating a list with bootstrapped means for each AB-group</span>
+</span></span><span style="display:flex;"><span>boot_7d<span style="color:#f92672">=</span>[]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">500</span>):
+</span></span><span style="display:flex;"><span>  boot_mean<span style="color:#f92672">=</span>df<span style="color:#f92672">.</span>sample(frac<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>,replace<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)<span style="color:#f92672">.</span>groupby(<span style="color:#e6db74">&#39;version&#39;</span>)[<span style="color:#e6db74">&#39;retention_7&#39;</span>]<span style="color:#f92672">.</span>mean()
+</span></span><span style="display:flex;"><span>  boot_7d<span style="color:#f92672">.</span>append(boot_mean)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Transforming the list to a DataFrame</span>
+</span></span><span style="display:flex;"><span>boot_7d<span style="color:#f92672">=</span>pd<span style="color:#f92672">.</span>DataFrame(boot_7d)
+</span></span><span style="display:flex;"><span>boot_7d<span style="color:#f92672">.</span>plot()
+</span></span></code></pre></div><p><img loading="lazy" src="https://pranaychakilam.github.io/portfolio/projects/ABtesting/bootstrap7day.jpg#center" alt=""  />
+</p>
+<p>For the two AB-groups, these two distributions above show the bootstrap uncertainty of the underlying 7-day retention. Simply by skimming this figure, we can tell that they appears to be some, albeit minor, evidence of a difference. Focusing on the variation in 7-day retention.</p>
+<p>(Take notice that to keep the calculations moving quickly, we’ve capped the number of bootstrap replications in this notebook at 500.) This would most certainly be increased to a much higher amount in “production,” like 10,000.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Adding a column with the % difference between the two AB-groups</span>
+</span></span><span style="display:flex;"><span>boot_7d[<span style="color:#e6db74">&#39;diff&#39;</span>]<span style="color:#f92672">=</span>((boot_7d[<span style="color:#e6db74">&#39;gate_30&#39;</span>]<span style="color:#f92672">-</span>boot_7d[<span style="color:#e6db74">&#39;gate_40&#39;</span>])<span style="color:#f92672">*</span><span style="color:#ae81ff">100</span><span style="color:#f92672">/</span>boot_7d[<span style="color:#e6db74">&#39;gate_40&#39;</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Ploting the bootstrap % difference</span>
+</span></span><span style="display:flex;"><span>ax<span style="color:#f92672">=</span>boot_7d[<span style="color:#e6db74">&#39;diff&#39;</span>]<span style="color:#f92672">.</span>plot()
+</span></span><span style="display:flex;"><span>ax<span style="color:#f92672">.</span>set_xlabel(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">% d</span><span style="color:#e6db74">ifference in means&#39;</span>)
+</span></span></code></pre></div><p><img loading="lazy" src="https://pranaychakilam.github.io/portfolio/projects/ABtesting/difference7day.jpg#center" alt=""  />
+</p>
+<h1 id="the-conclusion">The conclusion<a hidden class="anchor" aria-hidden="true" href="#the-conclusion">#</a></h1>
+<p>According to the bootstrap finding, there is convincing evidence that when the gate is at level 30 as opposed to level 40, 7-day retention is higher. The conclusion is that we shouldn&rsquo;t move the gate from level 30 to level 40 if we want to maintain good retention—both 1-day and 7-day retention. Of course, there are further metrics we might examine, such as the quantity of game rounds played or the amount of in-game purchases made by the two AB-groups. However, one of the most crucial measures is retention. It doesn&rsquo;t matter how much money players spend in-game if we can&rsquo;t keep them as customers.</p>
+<p>Why does retention increase when the gate is placed earlier? The reverse might be anticipated: The longer people play the game, the later the hurdle will be. But the evidence do not support this. One explanation for this is the hedonic adaptation idea.Hedonic adaptation, to put it briefly, is the propensity for humans to derive less and less pleasure over time from an enjoyable activity if that action is continued. Players&rsquo; enjoyment of the game is increased by making them stop when they get to a gate. However, fewer players reach level 40 when the gate is moved there, and those who do are more likely to abandon the game out of boredom.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># So, given the data and the bootstrap analysis</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Should we move the gate from level 30 to level 40 ?</span>
+</span></span><span style="display:flex;"><span>move_to_level_40 <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+</span></span></code></pre></div><h1 id="code">Code<a hidden class="anchor" aria-hidden="true" href="#code">#</a></h1>
+<p>Complete code can also be found in my <a href="https://github.com/pranaychakilam/A-B-Testing/blob/main/A_B_Testing.ipynb">GitHub</a>.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://pranaychakilam.github.io/portfolio/tags/python/">Python</a></li>
+      <li><a href="https://pranaychakilam.github.io/portfolio/tags/ab-testing/">AB testing</a></li>
+      <li><a href="https://pranaychakilam.github.io/portfolio/tags/boot-strapping/">Boot Strapping</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2023 <a href="https://pranaychakilam.github.io/portfolio/">Pranay Chakilam</a></span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Boot Strapping on Pranay Chakilam</title>
+    <link>https://pranaychakilam.github.io/portfolio/tags/boot-strapping/</link>
+    <description>Recent content in Boot Strapping on Pranay Chakilam</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="https://pranaychakilam.github.io/portfolio/tags/boot-strapping/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A/B Testing</title>
+      <link>https://pranaychakilam.github.io/portfolio/projects/abtesting/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://pranaychakilam.github.io/portfolio/projects/abtesting/</guid>
+      <description>Introduction Tactile Entertainment created the wildly famous smartphone puzzle game Cookie Cats. To clear the board and complete the level, the player must link tiles of the same hue in this traditional &amp;ldquo;connect three&amp;rdquo; puzzle game.
+Players will occasionally come across gates as they advance through the game&amp;rsquo;s stages that require them to wait a significant length of time or spend an in-app purchase in order to pass. These gates serve the crucial function of forcing players to take breaks from playing the game, which should boost and prolong the player&amp;rsquo;s pleasure of the game in addition to encouraging in-app purchases.</description>
+    </item>
+    
+  </channel>
+</rss>
